@@ -13,4 +13,3 @@ Dart 3.2.6
 flutter pub get
 
 flutter run
-"# science_dex" 

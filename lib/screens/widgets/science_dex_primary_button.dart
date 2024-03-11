@@ -29,9 +29,6 @@ class ScienceDexPrimaryButton extends StatelessWidget {
             onPressed: onTap,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             color: ScienceDexColors.secondaryColor,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
-              child: Text(text).bodyTinyMedium(style: TextStyle(color: ScienceDexColors.white)),
-            )));
+            child: Text(text).bodyTinyMedium(style: TextStyle(color: ScienceDexColors.white))));
   }
 }

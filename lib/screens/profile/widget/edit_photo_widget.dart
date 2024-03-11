@@ -8,15 +8,13 @@ class EditPhotoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 55,
+      padding: EdgeInsets.only(left: 8, right: 12),
       decoration:
           BoxDecoration(color: ScienceDexColors.grayExtraLight, borderRadius: BorderRadius.all(Radius.circular(9))),
       child: Row(children: [
-        Expanded(
-            child: Container(
-                margin: EdgeInsets.only(top: 5, bottom: 5, left: 8, right: 12),
-                decoration: BoxDecoration(color: Colors.lightBlue, shape: BoxShape.circle))),
+        Container(height: 44, width: 44, decoration: BoxDecoration(color: Colors.lightBlue, shape: BoxShape.circle)),
+        SizedBox(width: 10),
         Text("Editar foto").bodyTinyMedium(),
-        SizedBox(width: 8)
       ]),
     );
   }

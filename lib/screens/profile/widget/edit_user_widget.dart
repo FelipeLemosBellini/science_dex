@@ -20,8 +20,7 @@ class EditUserWidget extends StatelessWidget {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Expanded(
-            flex: 2,
+        Flexible(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text("Apelido").bodyTinyMedium(),
               SizedBox(height: 4),
@@ -33,7 +32,7 @@ class EditUserWidget extends StatelessWidget {
               )
             ])),
         SizedBox(width: 10),
-        Expanded(flex: 1, child: EditPhotoWidget())
+        EditPhotoWidget()
       ]),
     );
   }

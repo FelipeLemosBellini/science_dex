@@ -23,12 +23,11 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
         backgroundColor: ScienceDexColors.scaffoldBackground,
         body: CustomScrollView(shrinkWrap: true, physics: BouncingScrollPhysics(), slivers: [
           SliverToBoxAdapter(
-            child: Consumer<ConfigurationModel>(
-                builder: (context, model, child) => EditUserWidget(
-                    focusNode: model.focusNode,
-                    controller: model.controller,
-                    padding: const EdgeInsets.only(top: 20, right: 20, left: 20))),
-          ),
+              child: Consumer<ConfigurationModel>(
+                  builder: (context, model, child) => EditUserWidget(
+                      focusNode: model.focusNode,
+                      controller: model.controller,
+                      padding: const EdgeInsets.only(top: 20, right: 20, left: 20)))),
           SliverToBoxAdapter(
               child: ScienceDexDividerWidget(padding: const EdgeInsets.only(top: 22, bottom: 18, left: 20, right: 20))),
           SliverToBoxAdapter(

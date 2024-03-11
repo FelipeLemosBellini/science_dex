@@ -11,7 +11,7 @@ class ScienceDexDividerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child: Divider(color: color ?? ScienceDexColors.label, height: height ?? 2),
+      child: Divider(color: color ?? ScienceDexColors.label, thickness: 2, height: height ?? 0),
     );
   }
 }

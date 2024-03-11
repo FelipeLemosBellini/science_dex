@@ -11,6 +11,7 @@ class ItemPeriodWidget extends StatelessWidget {
       padding: EdgeInsets.only(left: 14, right: 8),
       margin: EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
+          color: ScienceDexColors.white,
           border: Border.all(color: ScienceDexColors.grayBorder, width: 1),
           borderRadius: BorderRadius.all(Radius.circular(5))),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

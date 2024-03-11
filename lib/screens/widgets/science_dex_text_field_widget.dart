@@ -37,14 +37,15 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
 
   TextStyle get _defaultTextStyle => const Text("").bodyTinyMedium().style!;
 
-  Color get _backgroundColor => widget.focusNode.hasFocus ? ScienceDexColors.white : ScienceDexColors.grayLight;
+  Color get _backgroundColor => widget.focusNode.hasFocus ? ScienceDexColors.white : ScienceDexColors.white;
 
-  OutlineInputBorder get _border =>
-      OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: BorderSide.none);
+  OutlineInputBorder get _border => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(color: ScienceDexColors.label, width: 2));
 
   OutlineInputBorder get _defaultFocusedBorder {
     return OutlineInputBorder(
-        borderSide: const BorderSide(color: ScienceDexColors.gray, width: 2), borderRadius: BorderRadius.circular(5));
+        borderRadius: BorderRadius.circular(5), borderSide: const BorderSide(color: ScienceDexColors.gray, width: 3));
   }
 
   @override
@@ -55,6 +56,7 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
       alignment: Alignment.center,
       child: TextField(
           cursorHeight: 13,
+          keyboardAppearance: Brightness.light,
           controller: widget.controller,
           readOnly: widget.readOnly ?? false,
           style: _defaultTextStyle,
@@ -69,7 +71,7 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
               isCollapsed: false,
               constraints: BoxConstraints.expand(height: 31),
               fillColor: _backgroundColor,
-              border: _border,
+              enabledBorder: _border,
               focusedBorder: _defaultFocusedBorder,
               labelStyle: _labelTextStyle)),
     );

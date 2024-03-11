@@ -17,8 +17,11 @@ class LogoutWidget extends StatelessWidget {
           decoration: BoxDecoration(color: ScienceDexColors.secondaryColor, shape: BoxShape.circle),
         ),
         SizedBox(width: 14),
-        Column(children: [
-          Text(name).bodyBaseMedium(),
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(name).bodyBaseMedium(style: TextStyle(color: ScienceDexColors.secondaryColor)),
+          Text(name).bodyBaseMedium(
+              style: TextStyle(
+                  fontSize: 13, color: ScienceDexColors.secondaryColor, decoration: TextDecoration.underline)),
         ])
       ]),
     );

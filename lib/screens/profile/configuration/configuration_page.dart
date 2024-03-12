@@ -44,7 +44,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
           SliverToBoxAdapter(
             child: ScienceDexPrimaryButton(
                 padding: EdgeInsets.only(top: 12, right: 20),
-                onTap: () {},
+                onTap: () => configurationModel.addPeriod(context),
                 alignment: Alignment.centerRight,
                 text: "Adicionar Período"),
           ),
@@ -52,8 +52,8 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
               child: Consumer<ConfigurationModel>(
                   builder: (context, model, child) => LogoutWidget(
                         padding: EdgeInsets.only(left: 20, top: 66),
-                    name: model.name,
-                    imageProfile: model.imageProfile,
+                        name: model.name,
+                        imageProfile: model.imageProfile,
                       ))),
           SliverToBoxAdapter(child: SizedBox(height: 50))
         ]));

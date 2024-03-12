@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:science_dex/screens/helper/science_dex_colors.dart';
@@ -39,25 +37,23 @@ class ScienceDexTextField extends StatefulWidget {
 
 class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
   TextStyle get _labelTextStyle =>
-      const Text("").bodyTinyMedium(style: TextStyle(color: ScienceDexColors.label)).style!;
+      const Text("").bodyExtraSmallMedium(style: TextStyle(color: ScienceDexColors.label)).style!;
 
   TextStyle get _defaultTextStyle => const Text("").bodyTinyMedium().style!;
 
-  Color get _backgroundColor => widget.focusNode.hasFocus ? ScienceDexColors.white : ScienceDexColors.white;
-
-  OutlineInputBorder get _border => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: ScienceDexColors.label, width: 2));
+  OutlineInputBorder get _border =>
+      OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: Colors.transparent));
 
   OutlineInputBorder get _defaultFocusedBorder {
     return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(5), borderSide: const BorderSide(color: ScienceDexColors.gray, width: 3));
+        borderRadius: BorderRadius.circular(5), borderSide: const BorderSide(color: ScienceDexColors.gray, width: 1));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 31.0,
-      padding: EdgeInsets.all(0.0),
+      height: 39.0,
+      padding: widget.padding ?? EdgeInsets.zero,
       alignment: Alignment.center,
       child: TextField(
           cursorHeight: 13,
@@ -67,7 +63,9 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
           style: _defaultTextStyle,
           textInputAction: widget.textInputAction,
           focusNode: widget.focusNode,
-          onTapOutside: (_) => widget.opTapOutSide?.call(),
+          onTapOutside: (_) {
+            widget.opTapOutSide != null ? widget.opTapOutSide?.call() : widget.focusNode.unfocus();
+          },
           onSubmitted: widget.onSubmitted,
           onChanged: widget.onChanged,
           maxLines: widget.maxLines,
@@ -76,9 +74,11 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
           decoration: InputDecoration(
               filled: true,
               isCollapsed: false,
-              constraints: BoxConstraints.expand(height: 31),
-              fillColor: _backgroundColor,
+              constraints: BoxConstraints.expand(height: 39),
+              fillColor: ScienceDexColors.grayLight,
               enabledBorder: _border,
+              labelText: widget.labelText,
+              floatingLabelBehavior: FloatingLabelBehavior.never,
               focusedBorder: _defaultFocusedBorder,
               labelStyle: _labelTextStyle)),
     );

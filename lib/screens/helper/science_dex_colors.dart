@@ -7,6 +7,7 @@ abstract class ScienceDexColors {
   static const Color grayBorder = Color(0xFFE9E9E9);
   static const Color grayExtraLight = Color(0xFFF0F0F0);
   static const Color gray = Color(0xFFD3D3D3);
+  static const Color grayIcon = Color(0xFFDCDCDD);
   static const Color label = Color(0xFFD9D9D9);
   static const Color black = Colors.black;
   static const Color dateBlack = Color(0xFF3D3D3D);

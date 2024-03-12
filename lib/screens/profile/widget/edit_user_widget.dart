@@ -32,7 +32,7 @@ class EditUserWidget extends StatelessWidget {
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text("Apelido").bodyTinyMedium(),
           SizedBox(height: 4),
-          ScienceDexTextField(
+          ScienceDexSimpleTextField(
             controller: controller,
             focusNode: focusNode,
             onSubmitted: onSubmitted,

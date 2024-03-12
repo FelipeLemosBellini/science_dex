@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
+import 'package:science_dex/screens/profile/period/period_page.dart';
 import 'package:science_dex/screens/profile/widget/dialog_widget/science_dex_dialog_widget.dart';
 
 class ConfigurationModel extends ChangeNotifier {
@@ -71,7 +72,7 @@ class ConfigurationModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addPeriod(BuildContext context){
-    ScienceDexDialog.show(context);
+  void addPeriod(BuildContext context) {
+    ScienceDexDialog.show(context: context, child: PeriodPage());
   }
 }

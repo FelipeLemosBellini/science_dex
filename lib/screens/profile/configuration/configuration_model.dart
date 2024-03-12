@@ -6,7 +6,7 @@ import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
 import 'package:science_dex/screens/profile/period/period_page.dart';
-import 'package:science_dex/screens/profile/widget/dialog_widget/science_dex_dialog_widget.dart';
+import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 
 class ConfigurationModel extends ChangeNotifier {
   final GalleryService _galleryService = GetIt.I.get<GalleryService>();

@@ -12,9 +12,11 @@ class ConfigurationModel extends ChangeNotifier {
 
   TextEditingController _controller = TextEditingController();
   FocusNode _focusNode = FocusNode();
+  late File _imageProfile;
 
   TextEditingController get controller => _controller;
   FocusNode get focusNode => _focusNode;
+  File? get imageProfile => _imageProfile;
 
   ConfigurationModel() {
     _initModel();
@@ -22,6 +24,7 @@ class ConfigurationModel extends ChangeNotifier {
 
   _initModel() {
     _getSurname();
+    _getPhotoProfile();
   }
 
   @override
@@ -32,12 +35,27 @@ class ConfigurationModel extends ChangeNotifier {
 
   void setImage() async {
     File? image = await _galleryService.getImageGallery();
+    _imageProfile = image ?? File('');
+    _saveImage(image);
+    notifyListeners();
+  }
+
+  void _saveImage(File? image) async {
+    if (image != null && image.path.isNotEmpty) {
+      await _localStorage.put(KeyLocalStorage.photoProfileKey, image.path);
+    }
   }
 
   void setSurname(String surname) => _localStorage.put(KeyLocalStorage.surnameKey, surname);
 
   void _getSurname() async {
     controller.text = await _localStorage.get(KeyLocalStorage.surnameKey);
+    notifyListeners();
+  }
+
+  void _getPhotoProfile() async {
+    String path = await _localStorage.get(KeyLocalStorage.photoProfileKey);
+    _imageProfile = File(path);
     notifyListeners();
   }
 }

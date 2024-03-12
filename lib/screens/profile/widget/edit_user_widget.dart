@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/profile/widget/edit_photo_widget.dart';
@@ -9,6 +11,7 @@ class EditUserWidget extends StatelessWidget {
   final EdgeInsets? padding;
   final Function(String)? onSubmitted;
   final Function() onTapPhoto;
+  final File? fileProfile;
 
   const EditUserWidget({
     super.key,
@@ -17,6 +20,7 @@ class EditUserWidget extends StatelessWidget {
     this.padding,
     this.onSubmitted,
     required this.onTapPhoto,
+    this.fileProfile,
   });
 
   @override
@@ -38,7 +42,7 @@ class EditUserWidget extends StatelessWidget {
           )
         ])),
         SizedBox(width: 10),
-        EditPhotoWidget(onTapPhoto: onTapPhoto)
+        EditPhotoWidget(onTapPhoto: onTapPhoto, fileImage: fileProfile)
       ]),
     );
   }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
+import 'package:science_dex/screens/widgets/science_dex_image_file_widget.dart';
 
 class LogoutWidget extends StatelessWidget {
   final EdgeInsets? padding;
@@ -14,21 +15,7 @@ class LogoutWidget extends StatelessWidget {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child: Row(children: [
-        Container(
-            height: 51,
-            width: 51,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(color: ScienceDexColors.grayBorder, shape: BoxShape.circle),
-            child: imageProfile!.path.isNotEmpty
-                ? ClipOval(
-                    child: Image.file(
-                    imageProfile ?? File(""),
-                    filterQuality: FilterQuality.high,
-                    width: 51,
-                    height: 51,
-                    fit: BoxFit.cover,
-                  ))
-                : Icon(Icons.person)),
+        ScienceDexImageFileWidget(file: imageProfile, size: 51),
         SizedBox(width: 14),
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(name).bodyBaseMedium(style: TextStyle(color: ScienceDexColors.secondaryColor)),

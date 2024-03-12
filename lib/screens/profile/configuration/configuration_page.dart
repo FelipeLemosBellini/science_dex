@@ -28,7 +28,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                       focusNode: model.focusNode,
                       controller: model.controller,
                       fileProfile: model.imageProfile,
-                      onSubmitted: model.setSurname,
+                      onSubmitted: model.setName,
                       onTapPhoto: model.setImage,
                       padding: const EdgeInsets.only(top: 20, right: 20, left: 20)))),
           SliverToBoxAdapter(
@@ -38,7 +38,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20), child: Text("Períodos").bodySmallSemiBold()),
           ),
           SliverToBoxAdapter(
-              child: Consumer(
+              child: Consumer<ConfigurationModel>(
                   builder: (context, model, child) =>
                       ListPeriodWidget(margin: EdgeInsets.only(top: 18, left: 20, right: 20)))),
           SliverToBoxAdapter(
@@ -48,7 +48,13 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                 alignment: Alignment.centerRight,
                 text: "Adicionar Período"),
           ),
-          SliverToBoxAdapter(child: LogoutWidget(padding: EdgeInsets.only(left: 20, top: 66), name: "João")),
+          SliverToBoxAdapter(
+              child: Consumer<ConfigurationModel>(
+                  builder: (context, model, child) => LogoutWidget(
+                        padding: EdgeInsets.only(left: 20, top: 66),
+                    name: model.name,
+                    imageProfile: model.imageProfile,
+                      ))),
           SliverToBoxAdapter(child: SizedBox(height: 50))
         ]));
   }

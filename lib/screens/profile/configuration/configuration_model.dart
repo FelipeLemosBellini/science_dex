@@ -13,17 +13,19 @@ class ConfigurationModel extends ChangeNotifier {
   TextEditingController _controller = TextEditingController();
   FocusNode _focusNode = FocusNode();
   File _imageProfile = File("");
+  String _nameUser = "";
 
   TextEditingController get controller => _controller;
   FocusNode get focusNode => _focusNode;
   File? get imageProfile => _imageProfile;
+  String get name => _nameUser;
 
   ConfigurationModel() {
     _initModel();
   }
 
   _initModel() {
-    _getSurname();
+    _getName();
     _getPhotoProfile();
   }
 
@@ -46,10 +48,19 @@ class ConfigurationModel extends ChangeNotifier {
     }
   }
 
-  void setSurname(String surname) => _localStorage.put(KeyLocalStorage.surnameKey, surname);
+  void setName(String surname) {
+    _localStorage.put(KeyLocalStorage.surnameKey, surname);
+    _getName();
+  }
 
-  void _getSurname() async {
-    controller.text = await _localStorage.get(KeyLocalStorage.surnameKey);
+  void _getName() async {
+    String name = await _localStorage.get(KeyLocalStorage.surnameKey);
+    _controller.text = name;
+    if (name.isNotEmpty) {
+      _nameUser = name;
+    } else {
+      _nameUser = "Undefined User";
+    }
     notifyListeners();
   }
 

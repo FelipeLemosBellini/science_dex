@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:science_dex/screens/helper/science_dex_colors.dart';
@@ -10,9 +12,11 @@ class ScienceDexTextField extends StatefulWidget {
   final TextInputType? textInputType;
   final int? maxLines;
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
   final EdgeInsets? padding;
   final String? labelText;
   final Function()? opTapOutSide;
+  final TextInputAction? textInputAction;
 
   const ScienceDexTextField({
     super.key,
@@ -22,9 +26,11 @@ class ScienceDexTextField extends StatefulWidget {
     this.textInputType,
     this.maxLines = 1,
     this.onChanged,
+    this.onSubmitted,
     required this.focusNode,
     this.labelText,
     this.opTapOutSide,
+    this.textInputAction,
   });
 
   @override
@@ -40,8 +46,7 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
   Color get _backgroundColor => widget.focusNode.hasFocus ? ScienceDexColors.white : ScienceDexColors.white;
 
   OutlineInputBorder get _border => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(5),
-      borderSide: BorderSide(color: ScienceDexColors.label, width: 2));
+      borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: ScienceDexColors.label, width: 2));
 
   OutlineInputBorder get _defaultFocusedBorder {
     return OutlineInputBorder(
@@ -60,8 +65,10 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
           controller: widget.controller,
           readOnly: widget.readOnly ?? false,
           style: _defaultTextStyle,
+          textInputAction: widget.textInputAction,
           focusNode: widget.focusNode,
           onTapOutside: (_) => widget.opTapOutSide?.call(),
+          onSubmitted: widget.onSubmitted,
           onChanged: widget.onChanged,
           maxLines: widget.maxLines,
           keyboardType: widget.textInputType,

@@ -7,12 +7,16 @@ class EditUserWidget extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final EdgeInsets? padding;
+  final Function(String)? onSubmitted;
+  final Function() onTapPhoto;
 
   const EditUserWidget({
     super.key,
     required this.controller,
     required this.focusNode,
     this.padding,
+    this.onSubmitted,
+    required this.onTapPhoto,
   });
 
   @override
@@ -22,17 +26,19 @@ class EditUserWidget extends StatelessWidget {
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Flexible(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("Apelido").bodyTinyMedium(),
-              SizedBox(height: 4),
-              ScienceDexTextField(
-                controller: controller,
-                focusNode: focusNode,
-                padding: EdgeInsets.only(top: 5),
-                labelText: "Apelido",
-              )
-            ])),
+          Text("Apelido").bodyTinyMedium(),
+          SizedBox(height: 4),
+          ScienceDexTextField(
+            controller: controller,
+            focusNode: focusNode,
+            onSubmitted: onSubmitted,
+            textInputAction: TextInputAction.send,
+            padding: EdgeInsets.only(top: 5),
+            labelText: "Apelido",
+          )
+        ])),
         SizedBox(width: 10),
-        EditPhotoWidget()
+        EditPhotoWidget(onTapPhoto: onTapPhoto)
       ]),
     );
   }

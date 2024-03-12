@@ -27,6 +27,8 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                   builder: (context, model, child) => EditUserWidget(
                       focusNode: model.focusNode,
                       controller: model.controller,
+                      onSubmitted: model.setSurname,
+                      onTapPhoto: model.setImage,
                       padding: const EdgeInsets.only(top: 20, right: 20, left: 20)))),
           SliverToBoxAdapter(
               child: ScienceDexDividerWidget(padding: const EdgeInsets.only(top: 22, bottom: 18, left: 20, right: 20))),

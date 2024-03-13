@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:science_dex/routes/route_generate.dart';
 
 abstract class ScienceDexDialog {
   static Future<void> show({required BuildContext context, required Widget child}) {

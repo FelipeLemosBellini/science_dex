@@ -1,11 +1,11 @@
 import 'package:get_it/get_it.dart';
-import 'package:science_dex/core/service/gallery/gallery_service.dart';
-import 'package:science_dex/core/service/local_storage/local_storage.dart';
+import 'package:science_dex/screens/profile/configuration/configuration_bloc.dart';
+import 'package:science_dex/screens/profile/period/period_bloc.dart';
 
 abstract class DI {
   static final _getIt = GetIt.I;
   static void setupDependencies() {
-    _getIt.registerFactory<GalleryService>(() => GalleryService());
-    _getIt.registerFactory<LocalStorage>(() => LocalStorage());
+    _getIt.registerFactory<ConfigurationBloc>(() => ConfigurationBloc());
+    _getIt.registerFactory<PeriodBloc>(() => PeriodBloc());
   }
 }

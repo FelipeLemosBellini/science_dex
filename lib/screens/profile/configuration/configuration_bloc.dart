@@ -8,13 +8,13 @@ import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_view_model.dart';
+import 'package:science_dex/screens/profile/configuration/configuration_state.dart';
 
-class ConfigurationBloc extends Cubit<ConfigurationViewModel> {
+class ConfigurationBloc extends Cubit<ConfigurationState> {
   final GalleryService _galleryService = GalleryService();
   final LocalStorage _localStorage = LocalStorage();
 
-  ConfigurationBloc() : super(ConfigurationViewModel.empty()) {
+  ConfigurationBloc() : super(ConfigurationState.empty()) {
     _initModel();
   }
 

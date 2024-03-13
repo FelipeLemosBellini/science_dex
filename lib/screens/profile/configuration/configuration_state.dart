@@ -2,26 +2,26 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-class ConfigurationViewModel {
+class ConfigurationState {
   TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
   File imageProfile = File("");
   String nameUser = "";
 
-  ConfigurationViewModel({
+  ConfigurationState({
     required this.controller,
     required this.imageProfile,
     required this.focusNode,
     required this.nameUser,
   });
 
-  ConfigurationViewModel copyWith({
+  ConfigurationState copyWith({
     TextEditingController? controller,
     String? nameUser,
     File? imageProfile,
     FocusNode? focusNode,
   }) {
-    return ConfigurationViewModel(
+    return ConfigurationState(
       controller: controller ?? this.controller,
       nameUser: nameUser ?? this.nameUser,
       focusNode: focusNode ?? this.focusNode,
@@ -29,8 +29,8 @@ class ConfigurationViewModel {
     );
   }
 
-  factory ConfigurationViewModel.empty() {
-    return ConfigurationViewModel(
+  factory ConfigurationState.empty() {
+    return ConfigurationState(
       controller: TextEditingController(),
       focusNode: FocusNode(),
       imageProfile: File(""),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PeriodViewModel {
+class PeriodState {
   TextEditingController periodController = TextEditingController();
   FocusNode periodFocus = FocusNode();
   String selectedCategory = '';

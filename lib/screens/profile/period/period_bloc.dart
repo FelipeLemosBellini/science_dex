@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:science_dex/screens/profile/period/period_view_model.dart';
+import 'package:science_dex/screens/profile/period/period_state.dart';
 
-class PeriodBloc extends Cubit<PeriodViewModel> {
-  PeriodBloc() : super(PeriodViewModel());
+class PeriodBloc extends Cubit<PeriodState> {
+  PeriodBloc() : super(PeriodState());
 
   void setCategorySelected(category) {
     state.selectedCategory = category;

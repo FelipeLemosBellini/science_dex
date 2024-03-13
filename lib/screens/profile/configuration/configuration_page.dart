@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:science_dex/screens/profile/configuration/configuration_bloc.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_view_model.dart';
+import 'package:science_dex/screens/profile/configuration/configuration_state.dart';
 import 'package:science_dex/screens/profile/widget/edit_user_widget.dart';
 import 'package:science_dex/screens/profile/widget/list_period_widget.dart';
 import 'package:science_dex/screens/profile/widget/logout_widget.dart';
@@ -27,7 +27,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ConfigurationBloc, ConfigurationViewModel>(
+    return BlocBuilder<ConfigurationBloc, ConfigurationState>(
         bloc: bloc,
         builder: (context, state) => Scaffold(
             appBar: ScienceDexAppBar(textTitle: Translate.strings.configuration),

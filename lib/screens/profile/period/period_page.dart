@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:science_dex/routes/route_generate.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/profile/period/period_bloc.dart';
-import 'package:science_dex/screens/profile/period/period_view_model.dart';
+import 'package:science_dex/screens/profile/period/period_state.dart';
 import 'package:science_dex/screens/profile/widget/bottom_buttons_widget.dart';
 import 'package:science_dex/screens/profile/widget/set_data_period_widget.dart';
 import 'package:science_dex/screens/profile/widget/set_target_value_widget.dart';
@@ -43,7 +43,7 @@ class _PeriodPageState extends State<PeriodPage> {
               labelText: "Nomeie seu período",
             ),
             SizedBox(height: 18),
-            BlocBuilder<PeriodBloc, PeriodViewModel>(
+            BlocBuilder<PeriodBloc, PeriodState>(
               bloc: bloc,
               builder: (context, state) => SetDataPeriodWidget(
                 categories: state.categories,

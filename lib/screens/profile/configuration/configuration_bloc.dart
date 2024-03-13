@@ -26,7 +26,7 @@ class ConfigurationBloc extends Cubit<ConfigurationViewModel> {
   void setImage() async {
     File? image = await _galleryService.getImageGallery();
     _saveImage(image);
-    emit(state.copyWith(imageProfile: image ?? File('')));
+    emit(state.copyWith(imageProfile: image));
   }
 
   void _saveImage(File? image) async {

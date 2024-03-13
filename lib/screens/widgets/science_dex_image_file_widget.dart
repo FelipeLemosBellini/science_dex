@@ -24,6 +24,7 @@ class ScienceDexImageFileWidget extends StatelessWidget {
                 width: size,
                 height: size,
                 fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Icon(Icons.person),
               ))
             : Icon(Icons.person));
   }

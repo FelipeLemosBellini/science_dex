@@ -20,25 +20,24 @@ class SetDataPeriodWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(18),
-      child: Column(children: [
-        SetDatePeriodWidget(title: "Começa", onTapDate: () {}),
-        ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
-        SetDatePeriodWidget(title: "Termina", onTapDate: () {}),
-        ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Expanded(child: Text("Categoria").bodyExtraSmallMedium()),
-          Expanded(
-              child: ScienceDexDropDownList(
-            onChange: onChangeCategory,
-            defaultValue: selectedCategory,
-            selectedValue: selectedCategory,
-            values: categories,
-          ))
-        ]),
-        SizedBox(height: 27),
-        SetTargetValueWidget()
-      ]),
-    );
+        decoration:
+            BoxDecoration(color: ScienceDexColors.grayBackground, borderRadius: BorderRadius.all(Radius.circular(5))),
+        padding: EdgeInsets.all(18),
+        child: Column(children: [
+          SetDatePeriodWidget(title: "Começa", onTapDate: () {}),
+          ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
+          SetDatePeriodWidget(title: "Termina", onTapDate: () {}),
+          ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Expanded(child: Text("Categoria").bodyExtraSmallMedium()),
+            Expanded(
+                child: ScienceDexDropDownList(
+              onChange: onChangeCategory,
+              defaultValue: selectedCategory,
+              selectedValue: selectedCategory,
+              values: categories,
+            ))
+          ])
+        ]));
   }
 }

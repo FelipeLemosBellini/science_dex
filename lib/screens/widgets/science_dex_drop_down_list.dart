@@ -25,11 +25,11 @@ class ScienceDexDropDownList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 29,
-      alignment: Alignment.center,
+      alignment: Alignment.centerRight,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(7)),
-        border: Border.all(color: ScienceDexColors.grayBorder),
-      ),
+          color: ScienceDexColors.white,
+          borderRadius: BorderRadius.all(Radius.circular(7)),
+          border: Border.all(color: ScienceDexColors.grayBorder)),
       child: DropdownButton<String>(
           isExpanded: true,
           isDense: true,
@@ -39,12 +39,16 @@ class ScienceDexDropDownList extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(12)),
           dropdownColor: ScienceDexColors.white,
           iconSize: 20,
+          elevation: 1,
           enableFeedback: true,
           icon: Icon(Icons.keyboard_arrow_down_outlined, color: ScienceDexColors.gray),
           items: values
               ?.map<DropdownMenuItem<String>>((String value) => DropdownMenuItem(
                     value: value,
-                    child: Align(alignment: Alignment.centerRight, child: Text(value).bodyExtraSmallRegular()),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(value).bodyExtraSmallRegular(),
+                    ),
                   ))
               .toList()),
     );

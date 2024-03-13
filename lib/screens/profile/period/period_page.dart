@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/profile/period/period_model.dart';
 import 'package:science_dex/screens/profile/widget/set_data_period_widget.dart';
+import 'package:science_dex/screens/profile/widget/set_target_value_widget.dart';
 import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 
 class PeriodPage extends StatefulWidget {
@@ -40,7 +41,13 @@ class _PeriodPageState extends State<PeriodPage> {
               categories: periodModel.categories,
               selectedCategory: periodModel.selectedCategory,
               onChangeCategory: periodModel.setCategorySelected,
-            )
+            ),
+            SizedBox(height: 27),
+            SetTargetValueWidget(padding: EdgeInsets.symmetric(horizontal: 18)),
+            SizedBox(height: 21),
+            SetTargetValueWidget(padding: EdgeInsets.symmetric(horizontal: 18)),
+            SizedBox(height: 37),
+
           ],
         ));
   }

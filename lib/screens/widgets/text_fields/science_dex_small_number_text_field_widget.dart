@@ -44,7 +44,7 @@ class _ScienceDexSmallMumberTextFieldState extends State<ScienceDexSmallNumberTe
   Color get _backgroundColor => widget.focusNode.hasFocus ? ScienceDexColors.white : ScienceDexColors.white;
 
   OutlineInputBorder get _border => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: ScienceDexColors.label, width: 2));
+      borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: ScienceDexColors.label, width: 1));
 
   OutlineInputBorder get _defaultFocusedBorder {
     return OutlineInputBorder(
@@ -59,7 +59,7 @@ class _ScienceDexSmallMumberTextFieldState extends State<ScienceDexSmallNumberTe
       padding: widget.padding ?? EdgeInsets.zero,
       alignment: Alignment.center,
       child: TextField(
-          cursorHeight: 13,
+          cursorHeight: 11,
           keyboardAppearance: Brightness.light,
           controller: widget.controller,
           readOnly: widget.readOnly ?? false,
@@ -71,14 +71,16 @@ class _ScienceDexSmallMumberTextFieldState extends State<ScienceDexSmallNumberTe
           },
           onSubmitted: widget.onSubmitted,
           onChanged: widget.onChanged,
-          maxLines: widget.maxLines,
-          keyboardType: widget.textInputType,
+          keyboardType: TextInputType.number,
           textAlign: TextAlign.center,
+          maxLines: 1,
           cursorColor: ScienceDexColors.secondaryColor,
           decoration: InputDecoration(
               filled: true,
               isCollapsed: false,
-              constraints: BoxConstraints.expand(height: 24,width: 64),
+              constraints: BoxConstraints.expand(height: 24, width: 64),
+              label: Center(child: Text(widget.labelText ?? "")),
+              floatingLabelBehavior: FloatingLabelBehavior.never,
               fillColor: _backgroundColor,
               enabledBorder: _border,
               focusedBorder: _defaultFocusedBorder,

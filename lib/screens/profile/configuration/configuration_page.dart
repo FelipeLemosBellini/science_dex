@@ -49,7 +49,10 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 20), child: Text("Períodos").bodySmallSemiBold()),
               ),
               SliverToBoxAdapter(
-                  child: ListPeriodWidget(margin: EdgeInsets.only(top: 18, left: 20, right: 20))),
+                  child: ListPeriodWidget(
+                margin: EdgeInsets.only(top: 18, left: 20, right: 20),
+                list: state.periodList,
+              )),
               SliverToBoxAdapter(
                 child: ScienceDexPrimaryButton(
                     padding: EdgeInsets.only(top: 12, right: 20),

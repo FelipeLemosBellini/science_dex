@@ -1,0 +1,1 @@
+enum PeriodTypeEnum { editPeriod, newPeriod }

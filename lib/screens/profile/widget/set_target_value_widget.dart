@@ -4,7 +4,9 @@ import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 
 class SetTargetValueWidget extends StatelessWidget {
   final EdgeInsets? padding;
-  const SetTargetValueWidget({super.key, this.padding});
+  final TextEditingController textController;
+  final FocusNode focusNode;
+  const SetTargetValueWidget({super.key, this.padding, required this.textController, required this.focusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +17,8 @@ class SetTargetValueWidget extends StatelessWidget {
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text('Meta 1').bodyExtraSmallMedium(),
             ScienceDexSmallNumberTextField(
-              focusNode: FocusNode(),
-              controller: TextEditingController(),
+              focusNode: focusNode,
+              controller: textController,
               labelText: "Un",
             )
           ]),

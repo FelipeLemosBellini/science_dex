@@ -9,12 +9,20 @@ class SetDataPeriodWidget extends StatelessWidget {
   final List<String> categories;
   final String selectedCategory;
   final ValueChanged<String?>? onChangeCategory;
+  final Function() openStartDate;
+  final Function() openEndDate;
+  final DateTime? startDate;
+  final DateTime? endDate;
 
   const SetDataPeriodWidget({
     super.key,
     required this.categories,
     required this.selectedCategory,
     this.onChangeCategory,
+    required this.openStartDate,
+    required this.openEndDate,
+    this.startDate,
+    this.endDate,
   });
 
   @override
@@ -24,9 +32,17 @@ class SetDataPeriodWidget extends StatelessWidget {
             BoxDecoration(color: ScienceDexColors.grayBackground, borderRadius: BorderRadius.all(Radius.circular(5))),
         padding: EdgeInsets.all(18),
         child: Column(children: [
-          SetDatePeriodWidget(title: "Começa", onTapDate: () {}),
+          SetDatePeriodWidget(
+            title: "Começa",
+            onTapDate: openStartDate,
+            dateTime: startDate,
+          ),
           ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
-          SetDatePeriodWidget(title: "Termina", onTapDate: () {}),
+          SetDatePeriodWidget(
+            title: "Termina",
+            onTapDate: openEndDate,
+            dateTime: endDate,
+          ),
           ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Expanded(child: Text("Categoria").bodyExtraSmallMedium()),

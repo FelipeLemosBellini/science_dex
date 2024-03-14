@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
+import 'package:science_dex/screens/enum/period_type_enum.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/profile/configuration/configuration_state.dart';
 
@@ -54,6 +55,6 @@ class ConfigurationBloc extends Cubit<ConfigurationState> {
   }
 
   void addPeriod(BuildContext context) {
-    ScienceDexRoutersPopUp.openPeriodPage(context);
+    ScienceDexRoutersPopUp.openPeriodPage(context: context);
   }
 }

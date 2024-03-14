@@ -44,12 +44,11 @@ class ScienceDexDropDownList extends StatelessWidget {
           icon: Icon(Icons.keyboard_arrow_down_outlined, color: ScienceDexColors.gray),
           items: values
               ?.map<DropdownMenuItem<String>>((String value) => DropdownMenuItem(
-                    value: value,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(value).bodyExtraSmallRegular(),
-                    ),
-                  ))
+                  value: value,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(value).bodyExtraSmallRegular(style: TextStyle(fontSize: 10)),
+                  )))
               .toList()),
     );
   }

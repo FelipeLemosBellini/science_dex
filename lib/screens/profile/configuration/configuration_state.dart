@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:science_dex/core/entity/period_entity.dart';
 
 class ConfigurationState {
   TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
   File imageProfile = File("");
   String nameUser = "";
+  List<PeriodEntity> periodList = [];
 
   ConfigurationState({
     required this.controller,

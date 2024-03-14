@@ -5,6 +5,7 @@ import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 class BottomButtonsWidget extends StatelessWidget {
   final Function() editOnTap;
   final Function() deleteOnTap;
+
   const BottomButtonsWidget({
     super.key,
     required this.editOnTap,

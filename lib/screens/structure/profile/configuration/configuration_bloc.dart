@@ -4,18 +4,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/repository/profile/profile_repository.dart';
+import 'package:science_dex/core/service/event/interface/science_dex_listener_interface.dart';
+import 'package:science_dex/core/service/event/science_dex_event_listener.dart';
+import 'package:science_dex/core/service/event/science_dex_event_type.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/structure/profile/configuration/configuration_state.dart';
 
-class ConfigurationBloc extends Cubit<ConfigurationState> {
+class ConfigurationBloc extends Cubit<ConfigurationState> implements IScienceDexListener {
   final GalleryService _galleryService = GalleryService();
   final LocalStorage _localStorage = LocalStorage();
   final ProfileRepository _profileRepository = ProfileRepository();
+  final ScienceDexEventListener _eventListener = ScienceDexEventListener();
 
   ConfigurationBloc() : super(ConfigurationState()) {
     _initModel();
+    _eventListener.add(listener: this, eventType: ScienceDexEventType.reloadListPeriod);
   }
 
   _initModel() {
@@ -61,5 +66,10 @@ class ConfigurationBloc extends Cubit<ConfigurationState> {
   void _getPeriods() async {
     var response = await _profileRepository.getPeriods();
     response.fold((l) => print(l), (list) => emit(state.copyWith(periodList: list)));
+  }
+
+  @override
+  void callbackListener(hasNewPeriod) {
+    _getPeriods();
   }
 }

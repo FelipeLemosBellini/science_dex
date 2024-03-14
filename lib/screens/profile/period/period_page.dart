@@ -32,49 +32,47 @@ class _PeriodPageState extends State<PeriodPage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PeriodBloc, PeriodState>(
-      bloc: bloc,
-      builder: (context, state) => Container(
-          color: Colors.white,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Stack(alignment: Alignment.center, children: [
-                Align(alignment: Alignment.center, child: Text("Novo Período").bodyExtraSmallSemiBold()),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: ScienceDexGestureDetector(
-                        onTap: () {}, child: Icon(Icons.close, color: ScienceDexColors.grayIcon, size: 24)))
-              ]),
-              SizedBox(height: 41),
-              ScienceDexTextField(
-                controller: bloc.state.periodController,
-                focusNode: bloc.state.periodFocus,
-                labelText: "Nomeie seu período",
-              ),
-              SizedBox(height: 18),
-              SetDataPeriodWidget(
-                  categories: state.categories,
-                  selectedCategory: state.selectedCategory,
-                  startDate: state.startDate,
-                  endDate: state.endDate,
-                  openEndDate: () => bloc.openEndDate(context),
-                  openStartDate: () => bloc.openStartDate(context),
-                  onChangeCategory: bloc.setCategorySelected),
-              SizedBox(height: 27),
-              SetTargetValueWidget(
-                  focusNode: state.targetOneFocus,
-                  textController: state.targetOneController,
-                  padding: EdgeInsets.symmetric(horizontal: 18)),
-              SizedBox(height: 21),
-              SetTargetValueWidget(
-                  focusNode: state.targetTwoFocus,
-                  textController: state.targetTwoController,
-                  padding: EdgeInsets.symmetric(horizontal: 18)),
-              SizedBox(height: 37),
-              ScienceDexPillButton(onTap: bloc.addPeriod, text: "Concluir")
-              // BottomButtonsWidget(deleteOnTap: bloc.deletePeriod, editOnTap: bloc.editPeriod),
-            ],
-          )),
-    );
+        bloc: bloc,
+        builder: (context, state) => SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(children: <Widget>[
+              Column(mainAxisSize: MainAxisSize.min, children: [
+                Stack(alignment: Alignment.center, children: [
+                  Align(alignment: Alignment.center, child: Text("Novo Período").bodyExtraSmallSemiBold()),
+                  Align(
+                      alignment: Alignment.centerRight,
+                      child: ScienceDexGestureDetector(
+                          onTap: () {}, child: Icon(Icons.close, color: ScienceDexColors.grayIcon, size: 24)))
+                ]),
+                SizedBox(height: 41),
+                ScienceDexTextField(
+                  controller: bloc.state.periodController,
+                  focusNode: bloc.state.periodFocus,
+                  labelText: "Nomeie seu período",
+                ),
+                SizedBox(height: 18),
+                SetDataPeriodWidget(
+                    categories: state.categories,
+                    selectedCategory: state.selectedCategory,
+                    startDate: state.startDate,
+                    endDate: state.endDate,
+                    openEndDate: () => bloc.openEndDate(context),
+                    openStartDate: () => bloc.openStartDate(context),
+                    onChangeCategory: bloc.setCategorySelected),
+                SizedBox(height: 27),
+                SetTargetValueWidget(
+                    focusNode: state.targetOneFocus,
+                    textController: state.targetOneController,
+                    padding: EdgeInsets.symmetric(horizontal: 18)),
+                SizedBox(height: 21),
+                SetTargetValueWidget(
+                    focusNode: state.targetTwoFocus,
+                    textController: state.targetTwoController,
+                    padding: EdgeInsets.symmetric(horizontal: 18)),
+                SizedBox(height: 37),
+                ScienceDexPillButton(onTap: bloc.addPeriod, text: "Concluir")
+                // BottomButtonsWidget(deleteOnTap: bloc.deletePeriod, editOnTap: bloc.editPeriod),
+              ])
+            ])));
   }
 }

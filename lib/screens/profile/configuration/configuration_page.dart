@@ -30,6 +30,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
     return BlocBuilder<ConfigurationBloc, ConfigurationState>(
         bloc: bloc,
         builder: (context, state) => Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: ScienceDexAppBar(textTitle: Translate.strings.configuration),
             backgroundColor: ScienceDexColors.scaffoldBackground,
             body: CustomScrollView(shrinkWrap: true, physics: BouncingScrollPhysics(), slivers: [

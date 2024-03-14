@@ -79,7 +79,7 @@ class _ScienceDexTextFieldState extends State<ScienceDexTextField> {
               enabledBorder: _border,
               labelText: widget.labelText,
               floatingLabelBehavior: FloatingLabelBehavior.never,
-              focusedBorder: _defaultFocusedBorder,
+              focusedBorder: widget.readOnly == false ? _defaultFocusedBorder : _border,
               labelStyle: _labelTextStyle)),
     );
   }

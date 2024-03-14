@@ -5,6 +5,7 @@ import 'package:science_dex/core/entity/period_entity.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/structure/profile/period/period_bloc.dart';
 import 'package:science_dex/screens/structure/profile/period/period_state.dart';
+import 'package:science_dex/screens/structure/profile/widget/bottom_buttons_widget.dart';
 import 'package:science_dex/screens/structure/profile/widget/set_data_period_widget.dart';
 import 'package:science_dex/screens/structure/profile/widget/set_target_value_widget.dart';
 import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
@@ -46,6 +47,7 @@ class _PeriodPageState extends State<PeriodPage> {
                 ]),
                 SizedBox(height: 41),
                 ScienceDexTextField(
+                  readOnly: state.editionMode,
                   controller: bloc.state.periodController,
                   focusNode: bloc.state.periodFocus,
                   labelText: "Nomeie seu período",
@@ -75,8 +77,11 @@ class _PeriodPageState extends State<PeriodPage> {
                     textController: state.targetTwoController,
                     padding: EdgeInsets.symmetric(horizontal: 18)),
                 SizedBox(height: 37),
-                ScienceDexPillButton(onTap: () => bloc.addPeriod(context), text: "Concluir")
-                // BottomButtonsWidget(deleteOnTap: bloc.deletePeriod, editOnTap: bloc.editPeriod),
+                Visibility(
+                    visible: state.editionMode,
+                    child: BottomButtonsWidget(
+                        deleteOnTap: () => bloc.deletePeriod(context), editOnTap: bloc.changeModeScreen),
+                    replacement: ScienceDexPillButton(onTap: () => bloc.completeAction(context), text: "Concluir"))
               ])
             ])));
   }

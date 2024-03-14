@@ -22,7 +22,8 @@ class PeriodBloc extends Cubit<PeriodState> {
   void setPeriod(PeriodEntity? periodEntity) {
     if (periodEntity != null) {
       emit(state.copyWith(
-        editionMode: true,
+          editionMode: true,
+          periodEntity: periodEntity,
           firstDate: periodEntity.startDate,
           endDate: periodEntity.endDate,
           selectedCategory: periodEntity.category,
@@ -36,11 +37,24 @@ class PeriodBloc extends Cubit<PeriodState> {
     emit(state.copyWith(selectedCategory: category));
   }
 
-  void deletePeriod() {}
+  void changeModeScreen() {
+    emit(state.copyWith(editionMode: false));
+  }
 
-  void editPeriod() {}
+  void deletePeriod(BuildContext context) async {
+    var response = await _profileRepository.deletePeriod(id: state.periodEntity!.id!);
+    response.fold((l) => l, (_) => _successPeriod(context));
+  }
 
-  void addPeriod(BuildContext context) async {
+  void completeAction(BuildContext context) async {
+    if (state.periodEntity != null) {
+      _editPeriod(context);
+    } else {
+      _createPeriod(context);
+    }
+  }
+
+  void _createPeriod(BuildContext context) async {
     if (_validationCreatePeriod()) {
       var response = await _profileRepository.createPeriod(
           newPeriod: PeriodEntity(
@@ -50,7 +64,7 @@ class PeriodBloc extends Cubit<PeriodState> {
               targetOne: int.parse(state.targetOneController.text),
               targetTwo: int.parse(state.targetTwoController.text),
               periodName: state.periodController.text));
-      response.fold((l) => print(l.error), (_) => _successCreateNewPeriod(context));
+      response.fold((l) => print(l.error), (_) => _successPeriod(context));
     }
   }
 
@@ -64,7 +78,22 @@ class PeriodBloc extends Cubit<PeriodState> {
     return (categoryWasSelected && hasPeriodName && hasEndDate && hasTargetTwo && hasTargetOne && hasStartDate);
   }
 
-  void _successCreateNewPeriod(BuildContext context) {
+  void _editPeriod(BuildContext context) async {
+    if (_validationCreatePeriod()) {
+      var response = await _profileRepository.updatePeriod(
+          id: state.periodEntity!.id!,
+          updatedPeriod: PeriodEntity(
+              category: state.selectedCategory,
+              endDate: state.endDate!,
+              startDate: state.startDate!,
+              targetOne: int.parse(state.targetOneController.text),
+              targetTwo: int.parse(state.targetTwoController.text),
+              periodName: state.periodController.text));
+      response.fold((l) => print(l.error), (_) => _successPeriod(context));
+    }
+  }
+
+  void _successPeriod(BuildContext context) {
     _eventListener.fire(eventType: ScienceDexEventType.reloadListPeriod);
     context.pop();
   }

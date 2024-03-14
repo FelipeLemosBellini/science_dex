@@ -9,8 +9,7 @@ class ProfileRepository {
   Future<Either<ScienceDexException, void>> createPeriod({required PeriodEntity newPeriod}) async {
     return executeWithCatch<void>(() async {
       final Database db = await SqliteService.database;
-      int a = await db.insert('period', newPeriod.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
-    print(a);
+      await db.insert('period', newPeriod.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
     });
   }
 
@@ -22,10 +21,21 @@ class ProfileRepository {
     });
   }
 
-  Future<Either<ScienceDexException, void>> deletePeriod({required String id}) async {
+  Future<Either<ScienceDexException, void>> deletePeriod({required int id}) async {
     return executeWithCatch(() async {
       final db = await SqliteService.initializeDB();
-      db.delete('period', where: "id = ?", whereArgs: [id]);
+      db.delete('period', where: "id = $id");
+    });
+  }
+
+  Future<Either<ScienceDexException, void>> updatePeriod({required PeriodEntity updatedPeriod, required int id}) async {
+    return executeWithCatch(() async {
+      final Database db = await SqliteService.database;
+      await db.update(
+        'period',
+        updatedPeriod.toMap(),
+        where: 'id = $id',
+      );
     });
   }
 }

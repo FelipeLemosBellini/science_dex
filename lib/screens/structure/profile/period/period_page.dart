@@ -69,7 +69,7 @@ class _PeriodPageState extends State<PeriodPage> {
                     textController: state.targetTwoController,
                     padding: EdgeInsets.symmetric(horizontal: 18)),
                 SizedBox(height: 37),
-                ScienceDexPillButton(onTap: bloc.addPeriod, text: "Concluir")
+                ScienceDexPillButton(onTap: () => bloc.addPeriod(context), text: "Concluir")
                 // BottomButtonsWidget(deleteOnTap: bloc.deletePeriod, editOnTap: bloc.editPeriod),
               ])
             ])));

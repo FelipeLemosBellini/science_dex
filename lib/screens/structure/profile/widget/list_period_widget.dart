@@ -14,7 +14,6 @@ class ListPeriodWidget extends StatelessWidget {
         margin: margin ?? EdgeInsets.zero,
         padding: EdgeInsets.all(8),
         height: MediaQuery.sizeOf(context).height * 0.5,
-        alignment: Alignment.center,
         decoration:
             BoxDecoration(color: ScienceDexColors.grayLight, borderRadius: BorderRadius.all(Radius.circular(15))),
         child: Visibility(

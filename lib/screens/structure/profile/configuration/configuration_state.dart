@@ -10,33 +10,17 @@ class ConfigurationState {
   String nameUser = "";
   List<PeriodEntity> periodList = [];
 
-  ConfigurationState({
-    required this.controller,
-    required this.imageProfile,
-    required this.focusNode,
-    required this.nameUser,
-  });
-
-  ConfigurationState copyWith({
-    TextEditingController? controller,
-    String? nameUser,
-    File? imageProfile,
-    FocusNode? focusNode,
-  }) {
-    return ConfigurationState(
-      controller: controller ?? this.controller,
-      nameUser: nameUser ?? this.nameUser,
-      focusNode: focusNode ?? this.focusNode,
-      imageProfile: imageProfile ?? this.imageProfile,
-    );
-  }
-
-  factory ConfigurationState.empty() {
-    return ConfigurationState(
-      controller: TextEditingController(),
-      focusNode: FocusNode(),
-      imageProfile: File(""),
-      nameUser: "",
-    );
+  ConfigurationState copyWith(
+      {TextEditingController? textController,
+      String? nameUser,
+      File? imageProfile,
+      FocusNode? focusNode,
+      List<PeriodEntity>? periodList}) {
+    return ConfigurationState()
+      ..controller = textController ?? this.controller
+      ..nameUser = nameUser ?? this.nameUser
+      ..focusNode = focusNode ?? this.focusNode
+      ..imageProfile = imageProfile ?? this.imageProfile
+      ..periodList = periodList ?? this.periodList;
   }
 }

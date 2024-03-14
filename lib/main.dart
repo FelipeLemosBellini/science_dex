@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:science_dex/DI/injection_dependencies.dart';
+import 'package:science_dex/core/service/database/local_database.dart';
 import 'package:science_dex/routes/route_generate.dart';
 import 'package:science_dex/screens/helper/science_dex_colors.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   DI.setupDependencies();
+  await SqliteService.initializeDB();
+
+
   runApp(const MyApp());
 }
 

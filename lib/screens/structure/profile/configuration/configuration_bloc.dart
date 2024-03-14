@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:science_dex/core/helpers/keys_local_storage.dart';
+import 'package:science_dex/core/repository/profile/profile_repository.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
@@ -11,14 +12,16 @@ import 'package:science_dex/screens/structure/profile/configuration/configuratio
 class ConfigurationBloc extends Cubit<ConfigurationState> {
   final GalleryService _galleryService = GalleryService();
   final LocalStorage _localStorage = LocalStorage();
+  final ProfileRepository _profileRepository = ProfileRepository();
 
-  ConfigurationBloc() : super(ConfigurationState.empty()) {
+  ConfigurationBloc() : super(ConfigurationState()) {
     _initModel();
   }
 
   _initModel() {
     _getName();
     _getPhotoProfile();
+    _getPeriods();
   }
 
   void setImage() async {
@@ -53,5 +56,10 @@ class ConfigurationBloc extends Cubit<ConfigurationState> {
 
   void addPeriod(BuildContext context) {
     ScienceDexRoutersPopUp.openPeriodPage(context: context);
+  }
+
+  void _getPeriods() async {
+    var response = await _profileRepository.getPeriods();
+    response.fold((l) => print(l), (list) => emit(state.copyWith(periodList: list)));
   }
 }

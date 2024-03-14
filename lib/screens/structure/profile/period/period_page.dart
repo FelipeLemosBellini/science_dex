@@ -40,7 +40,8 @@ class _PeriodPageState extends State<PeriodPage> {
                   Align(
                       alignment: Alignment.centerRight,
                       child: ScienceDexGestureDetector(
-                          onTap: () {}, child: Icon(Icons.close, color: ScienceDexColors.grayIcon, size: 24)))
+                          onTap: () => bloc.pop(context),
+                          child: Icon(Icons.close, color: ScienceDexColors.grayIcon, size: 24)))
                 ]),
                 SizedBox(height: 41),
                 ScienceDexTextField(

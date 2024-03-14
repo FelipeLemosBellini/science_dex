@@ -70,7 +70,7 @@ class ConfigurationBloc extends Cubit<ConfigurationState> implements IScienceDex
 
   void _getPeriods() async {
     var response = await _profileRepository.getPeriods();
-    response.fold((l) => print(l), (list) => emit(state.copyWith(periodList: list)));
+    response.fold((l) => l, (list) => emit(state.copyWith(periodList: list)));
   }
 
   @override

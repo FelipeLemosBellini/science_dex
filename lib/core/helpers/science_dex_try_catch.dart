@@ -5,7 +5,6 @@ Future<Either<ScienceDexException, T>> executeWithCatch<T>(Future Function() fun
   try {
     return Right(await func.call());
   } catch (error) {
-    print(error);
     return Left(ScienceDexException(error: "Houve um erro, tente novamente"));
   }
 }

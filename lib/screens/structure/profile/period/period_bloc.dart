@@ -64,7 +64,7 @@ class PeriodBloc extends Cubit<PeriodState> {
               targetOne: int.parse(state.targetOneController.text),
               targetTwo: int.parse(state.targetTwoController.text),
               periodName: state.periodController.text));
-      response.fold((l) => print(l.error), (_) => _successPeriod(context));
+      response.fold((l) => l, (_) => _successPeriod(context));
     }
   }
 
@@ -89,7 +89,7 @@ class PeriodBloc extends Cubit<PeriodState> {
               targetOne: int.parse(state.targetOneController.text),
               targetTwo: int.parse(state.targetTwoController.text),
               periodName: state.periodController.text));
-      response.fold((l) => print(l.error), (_) => _successPeriod(context));
+      response.fold((l) => l, (_) => _successPeriod(context));
     }
   }
 

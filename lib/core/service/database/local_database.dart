@@ -11,7 +11,6 @@ class SqliteService {
 
   static Future<Database> initializeDB() async {
     String path = await getDatabasesPath();
-    print('fdf');
     return openDatabase(join(path, 'database.db'), singleInstance: true, onCreate: (database, version) async {
       await database.execute('''CREATE TABLE period (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

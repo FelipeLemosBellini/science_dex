@@ -6,7 +6,17 @@ class SetTargetValueWidget extends StatelessWidget {
   final EdgeInsets? padding;
   final TextEditingController textController;
   final FocusNode focusNode;
-  const SetTargetValueWidget({super.key, this.padding, required this.textController, required this.focusNode});
+  final String targetTitle;
+  final bool isReadOnly;
+
+  const SetTargetValueWidget({
+    super.key,
+    this.padding,
+    required this.textController,
+    required this.focusNode,
+    required this.targetTitle,
+    required this.isReadOnly,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +25,15 @@ class SetTargetValueWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text('Meta 1').bodyExtraSmallMedium(),
-            ScienceDexSmallNumberTextField(
-              focusNode: focusNode,
-              controller: textController,
-              labelText: "Un",
+            Text(targetTitle).bodyTinyMedium(),
+            Visibility(
+              visible: isReadOnly,
+              child: Text(textController.text).bodyTinyMedium(style: TextStyle(fontSize: 10)),
+              replacement: ScienceDexSmallNumberTextField(
+                focusNode: focusNode,
+                controller: textController,
+                labelText: "Un",
+              ),
             )
           ]),
         ));

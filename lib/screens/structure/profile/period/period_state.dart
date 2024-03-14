@@ -22,19 +22,7 @@ class PeriodState {
     "Categoria 5",
   ];
 
-  PeriodState({
-    this.periodEntity,
-    required this.periodController,
-    required this.periodFocus,
-    required this.selectedCategory,
-    required this.categories,
-    required this.targetOneController,
-    required this.targetTwoController,
-    required this.targetOneFocus,
-    required this.targetTwoFocus,
-    this.startDate,
-    this.endDate,
-  });
+  bool editionMode = false;
 
   PeriodState copyWith({
     PeriodEntity? periodEntity,
@@ -48,38 +36,20 @@ class PeriodState {
     List<String>? categories,
     DateTime? firstDate,
     DateTime? endDate,
+    bool? editionMode,
   }) {
-    return PeriodState(
-      periodEntity: periodEntity ?? this.periodEntity,
-      periodController: periodController ?? this.periodController,
-      periodFocus: periodFocus ?? this.periodFocus,
-      selectedCategory: selectedCategory ?? this.selectedCategory,
-      categories: categories ?? this.categories,
-      startDate: firstDate ?? this.startDate,
-      endDate: endDate ?? this.endDate,
-      targetOneController: targetOneController ?? this.targetOneController,
-      targetTwoController: targetTwoController ?? this.targetTwoController,
-      targetOneFocus: targetOneFocus ?? this.targetOneFocus,
-      targetTwoFocus: targetTwoFocus ?? this.targetTwoFocus,
-    );
-  }
-
-  factory PeriodState.empty() {
-    return PeriodState(
-      periodController: TextEditingController(),
-      periodFocus: FocusNode(),
-      targetTwoController: TextEditingController(),
-      targetOneController: TextEditingController(),
-      targetOneFocus: FocusNode(),
-      targetTwoFocus: FocusNode(),
-      selectedCategory: '',
-      categories: [
-        "Categoria 1",
-        "Categoria 2",
-        "Categoria 3",
-        "Categoria 4",
-        "Categoria 5",
-      ],
-    );
+    return PeriodState()
+      ..editionMode = editionMode ?? this.editionMode
+      ..periodEntity = periodEntity ?? this.periodEntity
+      ..periodController = periodController ?? this.periodController
+      ..periodFocus = periodFocus ?? this.periodFocus
+      ..selectedCategory = selectedCategory ?? this.selectedCategory
+      ..categories = categories ?? this.categories
+      ..startDate = firstDate ?? this.startDate
+      ..endDate = endDate ?? this.endDate
+      ..targetOneController = targetOneController ?? this.targetOneController
+      ..targetTwoController = targetTwoController ?? this.targetTwoController
+      ..targetOneFocus = targetOneFocus ?? this.targetOneFocus
+      ..targetTwoFocus = targetTwoFocus ?? this.targetTwoFocus;
   }
 }

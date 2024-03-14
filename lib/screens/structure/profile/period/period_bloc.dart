@@ -17,11 +17,18 @@ class PeriodBloc extends Cubit<PeriodState> {
     required ScienceDexEventListener eventListener,
   })  : _profileRepository = profileRepository,
         _eventListener = eventListener,
-        super(PeriodState.empty());
+        super(PeriodState());
 
   void setPeriod(PeriodEntity? periodEntity) {
     if (periodEntity != null) {
-      emit(state.copyWith(periodEntity: periodEntity));
+      emit(state.copyWith(
+        editionMode: true,
+          firstDate: periodEntity.startDate,
+          endDate: periodEntity.endDate,
+          selectedCategory: periodEntity.category,
+          periodController: TextEditingController(text: periodEntity.periodName),
+          targetOneController: TextEditingController(text: periodEntity.targetOne.toString()),
+          targetTwoController: TextEditingController(text: periodEntity.targetTwo.toString())));
     }
   }
 

@@ -52,6 +52,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
               SliverToBoxAdapter(
                   child: ListPeriodWidget(
                 margin: EdgeInsets.only(top: 18, left: 20, right: 20),
+                onTap: (period) => bloc.openPeriod(period, context),
                 list: state.periodList,
               )),
               SliverToBoxAdapter(

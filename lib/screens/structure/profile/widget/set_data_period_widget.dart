@@ -12,6 +12,7 @@ class SetDataPeriodWidget extends StatelessWidget {
   final Function() openEndDate;
   final DateTime? startDate;
   final DateTime? endDate;
+  final bool isOnlyRead;
 
   const SetDataPeriodWidget({
     super.key,
@@ -22,23 +23,27 @@ class SetDataPeriodWidget extends StatelessWidget {
     required this.openEndDate,
     this.startDate,
     this.endDate,
+    required this.isOnlyRead,
   });
+
+  Color get backgroundColor => isOnlyRead ? ScienceDexColors.white : ScienceDexColors.grayBackground;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration:
-            BoxDecoration(color: ScienceDexColors.grayBackground, borderRadius: BorderRadius.all(Radius.circular(5))),
+        decoration: BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.all(Radius.circular(5))),
         padding: EdgeInsets.all(18),
         child: Column(children: [
           SetDatePeriodWidget(
             title: "Começa",
+            isOnlyRead: isOnlyRead,
             onTapDate: openStartDate,
             dateTime: startDate,
           ),
           ScienceDexDividerWidget(padding: EdgeInsets.symmetric(vertical: 7), height: 1, color: ScienceDexColors.gray),
           SetDatePeriodWidget(
             title: "Termina",
+            isOnlyRead: isOnlyRead,
             onTapDate: openEndDate,
             dateTime: endDate,
           ),
@@ -47,6 +52,7 @@ class SetDataPeriodWidget extends StatelessWidget {
             Expanded(child: Text("Categoria").bodyExtraSmallMedium()),
             Expanded(
                 child: ScienceDexDropDownList(
+              isOnlyRead: isOnlyRead,
               onChange: onChangeCategory,
               defaultValue: selectedCategory,
               selectedValue: selectedCategory,

@@ -6,6 +6,7 @@ class ScienceDexDropDownList extends StatelessWidget {
   final String selectedValue;
   final String defaultValue;
   final ValueChanged<String?>? onChange;
+  final bool isOnlyRead;
 
   const ScienceDexDropDownList({
     super.key,
@@ -13,6 +14,7 @@ class ScienceDexDropDownList extends StatelessWidget {
     required this.selectedValue,
     required this.defaultValue,
     this.onChange,
+    required this.isOnlyRead,
   });
 
   String? _getValue() {
@@ -21,6 +23,7 @@ class ScienceDexDropDownList extends StatelessWidget {
     return _hasValue ? firstValue : selectedValue;
   }
 
+  Color get _borderColor => isOnlyRead ? ScienceDexColors.white : ScienceDexColors.grayBorder;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,27 +32,34 @@ class ScienceDexDropDownList extends StatelessWidget {
       decoration: BoxDecoration(
           color: ScienceDexColors.white,
           borderRadius: BorderRadius.all(Radius.circular(7)),
-          border: Border.all(color: ScienceDexColors.grayBorder)),
-      child: DropdownButton<String>(
-          isExpanded: true,
-          isDense: true,
-          onChanged: onChange,
-          underline: const SizedBox.shrink(),
-          value: _getValue(),
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          dropdownColor: ScienceDexColors.white,
-          iconSize: 20,
-          elevation: 1,
-          enableFeedback: true,
-          icon: Icon(Icons.keyboard_arrow_down_outlined, color: ScienceDexColors.gray),
-          items: values
-              ?.map<DropdownMenuItem<String>>((String value) => DropdownMenuItem(
-                  value: value,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(value).bodyExtraSmallRegular(style: TextStyle(fontSize: 10)),
-                  )))
-              .toList()),
+          border: Border.all(color: _borderColor)),
+      child: Visibility(
+        visible: isOnlyRead,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: Text(selectedValue).bodyExtraSmallRegular(style: TextStyle(fontSize: 10)),
+        ),
+        replacement: DropdownButton<String>(
+            isExpanded: true,
+            isDense: true,
+            onChanged: onChange,
+            underline: const SizedBox.shrink(),
+            value: _getValue(),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+            dropdownColor: ScienceDexColors.white,
+            iconSize: 20,
+            elevation: 1,
+            enableFeedback: true,
+            icon: Icon(Icons.keyboard_arrow_down_outlined, color: ScienceDexColors.gray),
+            items: values
+                ?.map<DropdownMenuItem<String>>((String value) => DropdownMenuItem(
+                    value: value,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(value).bodyExtraSmallRegular(style: TextStyle(fontSize: 10)),
+                    )))
+                .toList()),
+      ),
     );
   }
 }

@@ -9,8 +9,8 @@ abstract class ScienceDexDateHelper {
         context: context,
         initialDate: today,
         barrierColor: ScienceDexColors.black.withOpacity(0.25),
-        firstDate: DateTime(1970, 1, 1),
-        lastDate: today);
+        firstDate: today,
+        lastDate: DateTime(2100, 1, 1));
   }
 
   static String formatPeriodDate(DateTime? dateTime) {

@@ -32,6 +32,7 @@ class _PeriodPageState extends State<PeriodPage> {
     return BlocBuilder<PeriodBloc, PeriodState>(
         bloc: bloc,
         builder: (context, state) => SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             child: Column(children: <Widget>[
               Column(mainAxisSize: MainAxisSize.min, children: [
@@ -51,6 +52,7 @@ class _PeriodPageState extends State<PeriodPage> {
                 ),
                 SizedBox(height: 18),
                 SetDataPeriodWidget(
+                    isOnlyRead: state.editionMode,
                     categories: state.categories,
                     selectedCategory: state.selectedCategory,
                     startDate: state.startDate,
@@ -60,11 +62,15 @@ class _PeriodPageState extends State<PeriodPage> {
                     onChangeCategory: bloc.setCategorySelected),
                 SizedBox(height: 27),
                 SetTargetValueWidget(
+                    isReadOnly: state.editionMode,
+                    targetTitle: "Meta 1",
                     focusNode: state.targetOneFocus,
                     textController: state.targetOneController,
                     padding: EdgeInsets.symmetric(horizontal: 18)),
                 SizedBox(height: 21),
                 SetTargetValueWidget(
+                    isReadOnly: state.editionMode,
+                    targetTitle: "Meta 2",
                     focusNode: state.targetTwoFocus,
                     textController: state.targetTwoController,
                     padding: EdgeInsets.symmetric(horizontal: 18)),

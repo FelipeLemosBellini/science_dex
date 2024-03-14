@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:science_dex/core/entity/period_entity.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 import 'package:science_dex/screens/structure/profile/widget/item_period_widget.dart';
+import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 
 class ListPeriodWidget extends StatelessWidget {
   final EdgeInsets? margin;
   final List<PeriodEntity> list;
-  const ListPeriodWidget({super.key, this.margin, required this.list});
+  final Function(PeriodEntity) onTap;
+
+  const ListPeriodWidget({
+    super.key,
+    this.margin,
+    required this.list,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,7 @@ class ListPeriodWidget extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               itemCount: list.length,
               itemBuilder: (_, index) {
-                return ItemPeriodWidget(periodEntity: list[index]);
+                return ItemPeriodWidget(onTap: onTap, periodEntity: list[index]);
               }),
         ));
   }

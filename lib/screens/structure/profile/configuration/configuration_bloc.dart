@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:science_dex/core/entity/period_entity.dart';
 import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/repository/profile/profile_repository.dart';
 import 'package:science_dex/core/service/event/interface/science_dex_listener_interface.dart';
@@ -27,6 +28,10 @@ class ConfigurationBloc extends Cubit<ConfigurationState> implements IScienceDex
     _getName();
     _getPhotoProfile();
     _getPeriods();
+  }
+
+  void openPeriod(PeriodEntity periodEntity, BuildContext context) {
+    ScienceDexRoutersPopUp.openPeriodPage(periodEntity: periodEntity, context: context);
   }
 
   void setImage() async {

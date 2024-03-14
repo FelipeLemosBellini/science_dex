@@ -26,7 +26,7 @@ class ListPeriodWidget extends StatelessWidget {
             BoxDecoration(color: ScienceDexColors.grayLight, borderRadius: BorderRadius.all(Radius.circular(15))),
         child: Visibility(
           visible: list.isNotEmpty,
-          replacement: Text("Não há períodos ainda").bodyExtraSmallMedium(),
+          replacement: Center(child: Text("Não há períodos ainda").bodyExtraSmallMedium()),
           child: ListView.builder(
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),

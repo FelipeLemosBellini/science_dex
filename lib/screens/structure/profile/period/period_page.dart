@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:science_dex/core/entity/period_entity.dart';
-import 'package:science_dex/screens/enum/period_type_enum.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
-import 'package:science_dex/screens/profile/period/period_bloc.dart';
-import 'package:science_dex/screens/profile/period/period_state.dart';
-import 'package:science_dex/screens/profile/widget/bottom_buttons_widget.dart';
-import 'package:science_dex/screens/profile/widget/set_data_period_widget.dart';
-import 'package:science_dex/screens/profile/widget/set_target_value_widget.dart';
+import 'package:science_dex/screens/structure/profile/period/period_bloc.dart';
+import 'package:science_dex/screens/structure/profile/period/period_state.dart';
+import 'package:science_dex/screens/structure/profile/widget/set_data_period_widget.dart';
+import 'package:science_dex/screens/structure/profile/widget/set_target_value_widget.dart';
 import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 
 class PeriodPage extends StatefulWidget {

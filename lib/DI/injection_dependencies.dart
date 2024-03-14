@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_bloc.dart';
-import 'package:science_dex/screens/profile/period/period_bloc.dart';
+import 'package:science_dex/screens/structure/profile/configuration/configuration_bloc.dart';
+import 'package:science_dex/screens/structure/profile/period/period_bloc.dart';
 
 abstract class DI {
   static final _getIt = GetIt.I;

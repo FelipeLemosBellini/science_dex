@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:science_dex/core/entity/period_entity.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
-import 'package:science_dex/screens/profile/period/period_state.dart';
+import 'package:science_dex/screens/structure/profile/period/period_state.dart';
 
 class PeriodBloc extends Cubit<PeriodState> {
   PeriodBloc() : super(PeriodState.empty());

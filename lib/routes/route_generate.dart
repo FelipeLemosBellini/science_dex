@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:science_dex/routes/route_names.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_page.dart';
+import 'package:science_dex/screens/structure/profile/configuration/configuration_page.dart';
 
 abstract class RouteGenerate {
   static GoRouter router = GoRouter(initialLocation: RouteNames.initial, routes: [

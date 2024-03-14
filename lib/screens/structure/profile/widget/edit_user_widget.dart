@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
-import 'package:science_dex/screens/profile/widget/edit_photo_widget.dart';
+import 'package:science_dex/screens/structure/profile/widget/edit_photo_widget.dart';
 import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 
 class EditUserWidget extends StatelessWidget {

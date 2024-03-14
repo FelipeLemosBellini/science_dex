@@ -2,14 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
-import 'package:go_router/go_router.dart';
 import 'package:science_dex/core/helpers/keys_local_storage.dart';
 import 'package:science_dex/core/service/gallery/gallery_service.dart';
 import 'package:science_dex/core/service/local_storage/local_storage.dart';
-import 'package:science_dex/screens/enum/period_type_enum.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_state.dart';
+import 'package:science_dex/screens/structure/profile/configuration/configuration_state.dart';
 
 class ConfigurationBloc extends Cubit<ConfigurationState> {
   final GalleryService _galleryService = GalleryService();

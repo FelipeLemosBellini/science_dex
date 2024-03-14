@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_bloc.dart';
-import 'package:science_dex/screens/profile/configuration/configuration_state.dart';
-import 'package:science_dex/screens/profile/widget/edit_user_widget.dart';
-import 'package:science_dex/screens/profile/widget/list_period_widget.dart';
-import 'package:science_dex/screens/profile/widget/logout_widget.dart';
+import 'package:science_dex/screens/structure/profile/configuration/configuration_bloc.dart';
+import 'package:science_dex/screens/structure/profile/configuration/configuration_state.dart';
+import 'package:science_dex/screens/structure/profile/widget/edit_user_widget.dart';
+import 'package:science_dex/screens/structure/profile/widget/list_period_widget.dart';
+import 'package:science_dex/screens/structure/profile/widget/logout_widget.dart';
 import 'package:science_dex/screens/widgets/export_science_dex_material.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
 

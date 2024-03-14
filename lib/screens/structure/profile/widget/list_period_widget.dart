@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:science_dex/core/entity/period_entity.dart';
 import 'package:science_dex/screens/helper/export_helper_screen.dart';
-import 'package:science_dex/screens/profile/widget/item_period_widget.dart';
+import 'package:science_dex/screens/structure/profile/widget/item_period_widget.dart';
 
 class ListPeriodWidget extends StatelessWidget {
   final EdgeInsets? margin;

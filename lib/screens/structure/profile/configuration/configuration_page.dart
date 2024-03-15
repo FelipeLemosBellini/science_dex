@@ -33,7 +33,7 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
             resizeToAvoidBottomInset: false,
             appBar: ScienceDexAppBar(textTitle: Translate.strings.configuration),
             backgroundColor: ScienceDexColors.scaffoldBackground,
-            body: CustomScrollView(shrinkWrap: true, physics: BouncingScrollPhysics(), slivers: [
+            body: CustomScrollView(shrinkWrap: true, slivers: [
               SliverToBoxAdapter(
                   child: EditUserWidget(
                       focusNode: state.focusNode,

@@ -33,10 +33,9 @@ class _PeriodPageState extends State<PeriodPage> {
     return BlocBuilder<PeriodBloc, PeriodState>(
         bloc: bloc,
         builder: (context, state) => SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             child: Column(children: <Widget>[
-              Column(mainAxisSize: MainAxisSize.min, children: [
+              Column(children: [
                 Stack(alignment: Alignment.center, children: [
                   Align(alignment: Alignment.center, child: Text("Novo Período").bodyExtraSmallSemiBold()),
                   Align(

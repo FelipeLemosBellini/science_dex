@@ -9,7 +9,6 @@ Future<void> main() async {
   DI.setupDependencies();
   await SqliteService.initializeDB();
 
-
   runApp(const MyApp());
 }
 
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           fontFamily: 'Inter',
           useMaterial3: false,
-          textSelectionTheme: TextSelectionThemeData(
+          textSelectionTheme: const TextSelectionThemeData(
             selectionHandleColor: ScienceDexColors.secondaryColor,
             cursorColor: ScienceDexColors.secondaryColor,
           )),

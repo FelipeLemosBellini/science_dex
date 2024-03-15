@@ -7,9 +7,9 @@ abstract class ScienceDexDialog {
         barrierDismissible: true,
         barrierColor: Colors.black.withOpacity(0.25),
         builder: (_) => AlertDialog(
-            contentPadding: EdgeInsets.all(14),
+            contentPadding: const EdgeInsets.all(14),
             alignment: Alignment.center,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
             content: child));
   }
 }
